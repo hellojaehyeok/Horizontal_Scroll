@@ -1,0 +1,144 @@
+.App {
+
+
+}
+
+
+
+/* Reset.css */
+*{-webkit-tap-highlight-color:none;
+  font-family: 'NanumSquare', sans-serif;
+  color:#707070;}
+  html, body,
+  div, span,
+  dl, dt, dd, ul, ol, li,
+  h1, h2, h3, h4, h5, h6,
+  blockquote, p, address, pre, cite,
+  form, fieldset, input, textarea, select,
+  table, th, td {
+    margin:0;
+    padding:0;
+  }
+  input[type="password"]{font-family:'nbg';letter-spacing:-5px;}
+  input[type="password"]::placeholder{font-family:'nbg';letter-spacing:normal;}
+  input::placeholder{font-family:'nbg';font-weight:500;}
+  h1, h2, h3, h4, h5, h6 {
+    font-size:100%;
+    font-weight:normal;
+    letter-spacing:normal;
+  }
+  
+  fieldset, img, abbr,acronym { border:0 none; }
+  
+  ol, ul { list-style:none; }
+  
+  table {
+    border-collapse: separate;
+    border-spacing:0;
+    border:0 none;
+  }
+  caption, th, td {
+    text-align:left;
+    font-weight: normal;
+    border:0;
+  }
+  
+  address, caption, strong, em, cite {
+    font-weight:normal;
+    font-style:normal;
+  }
+  ins { text-decoration:none; }
+  del { text-decoration:line-through; }
+  
+  blockquote:before, blockquote:after, q:before, q:after { content:""; }
+  blockquote,q { quotes:"" ""; }
+  
+  hr { display:none; }
+  
+  /* HTML5 Boilerplate  */
+  
+  article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display:block; }
+  img, video { /*max-width:100%;*/ border:0; vertical-align:top; }
+  audio, canvas, video { display:inline-block; *display:inline; *zoom: 1; }
+  img{image-rendering:-moz-auto;/*firefox*/
+  image-rendering:-o-auto;/*opera*/
+  image-rendering:-webkit-optimize-contrast;/*webkit*/
+  image-rendering:auto;
+  -ms-interpolation-mode:nearest-neighbor;
+  -webkit-perspective: 1;}
+  * { margin:0; padding:0; border:0; outline:0; vertical-align:top; box-sizing:border-box; }
+  ul, ol, dl { list-style:none; }
+  a { vertical-align:top; text-decoration:none; color:inherit; cursor: pointer;}
+  table { border-collapse:collapse; border-spacing:0; }
+  input, select, label { vertical-align:middle; }
+  button, input, select, textarea { font-size:100%; margin:0; vertical-align:baseline; *vertical-align:middle;font-weight:normal;letter-spacing:normal;}
+  button, input { line-height:normal;}
+  button, select { text-transform:none; }
+  
+
+  /*! locomotive-scroll v4.1.1 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
+html.has-scroll-smooth {
+  overflow: hidden; }
+
+html.has-scroll-dragging {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.has-scroll-smooth body {
+  overflow: hidden; }
+
+.has-scroll-smooth [data-scroll-container] {
+  min-height: 100vh; }
+
+[data-scroll-direction="horizontal"] [data-scroll-container] {
+  height: 100vh;
+  display: inline-block;
+  white-space: nowrap; }
+
+[data-scroll-direction="horizontal"] [data-scroll-section] {
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+  height: 100%; }
+
+.c-scrollbar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 11px;
+  height: 100%;
+  transform-origin: center right;
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0; }
+  .c-scrollbar:hover {
+    transform: scaleX(1.45); }
+  .c-scrollbar:hover, .has-scroll-scrolling .c-scrollbar, .has-scroll-dragging .c-scrollbar {
+    opacity: 1; }
+  [data-scroll-direction="horizontal"] .c-scrollbar {
+    width: 100%;
+    height: 10px;
+    top: auto;
+    bottom: 0;
+    transform: scaleY(1); }
+    [data-scroll-direction="horizontal"] .c-scrollbar:hover {
+      transform: scaleY(1.3); }
+
+.c-scrollbar_thumb {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: black;
+  opacity: 0.5;
+  width: 7px;
+  border-radius: 10px;
+  margin: 2px;
+  cursor: -webkit-grab;
+  cursor: grab; }
+  .has-scroll-dragging .c-scrollbar_thumb {
+    cursor: -webkit-grabbing;
+    cursor: grabbing; }
+  [data-scroll-direction="horizontal"] .c-scrollbar_thumb {
+    right: auto;
+    bottom: 0; }
