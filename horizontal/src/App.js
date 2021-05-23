@@ -1,60 +1,67 @@
-import logo from './logo.svg';
-import './App.css';
+import React ,{useState, useEffect, useRef} from 'react';
+
+// style
 import styled from "styled-components"
-import LocomotiveScroll from 'locomotive-scroll';
-import Header from './components/header/header';
-
-
-function App() {
 
 
 
+const Main = (props) => {
+    const gridRef = useRef();
+    const scrollRef = useRef();
+    const [heightGap, setHeightGap] = useState(2500);
+
+    useEffect(() => {
+      // setHeightGap((window.innerWidth * 2.5) - (window.innerWidth - window.innerHeight));
+      setHeightGap(window.innerWidth * 2.5);
+      console.log(scrollRef.current.clientWidth);
+      // console.log(gridRef.current.clientWidth);
+      // console.log(window.innerWidth * 2.5);
+      // console.log(window.innerWidth - window.innerHeight);
+      // console.log((window.innerWidth * 2.5) - (window.innerWidth - window.innerHeight));
+    }, []);
+
+    window.addEventListener("scroll", (e) => {
+        if(gridRef.current){
+            let currentScroll = window.scrollY;
+            // 이계산식을 손봐야함  
+            gridRef.current.style.left=`${-1 * currentScroll}px`;
+            // console.log(gridRef.current.getBoundingClientRect());
+            // console.log(gridRef.current.getBoundingClientRect().x);
+            // console.log(gridRef.current.getBoundingClientRect().left);
+        }
+    })
 
 
-  
-  return (
-    <Container>
-      {/* 헤더 */}
-      <Header />
+    return(
+        <Container>
 
-      <Main>
-        <Scroll>
-          <Content>
+          <GridWrap className="test" ref={gridRef}> 
+            qweqwe
+          </GridWrap>
 
-            <Gallery>
+          <ForScroll ref={scrollRef} heightGap={heightGap}></ForScroll>
+        </Container>
+    )
+};
 
-            </Gallery>
-
-
-          </Content>
-        </Scroll>
-      </Main>
-
-
-    </Container>
-  );
-}
-
-export default App;
-
+export default Main;
 
 const Container = styled.div`
-    width: 100%;
 `
 
-const Main = styled.div`
-  width: 100%;
+const ForScroll = styled.div`
+
+  /* ${({heightGap})=>{
+      return(` height:${heightGap}px;`)
+  }} */
+  height:2000px;
+  border: 1px solid slateblue;
 `
 
-const Scroll = styled.div`
-  width: 100%;
+const GridWrap = styled.div`
+  height:100%;
+  width:2500px;
+  z-index:1;
+  position: fixed;
+  border:10px solid salmon;
 `
-
-const Content = styled.div`
-  width: 100%;
-`
-
-const Gallery = styled.div`
-  width: 100%;
-`
-
