@@ -10,7 +10,7 @@ const App = (props) => {
     const [scrollHeight, setScrollHeight] = useState(2000);
 
     const setHeight = () => {
-      setScrollHeight((gridRef.current.offsetWidth - window.innerWidth) + (1016 - (937 - window.innerHeight))  );
+      setScrollHeight((gridRef.current.offsetWidth - window.innerWidth) + (1027 - (937 - window.innerHeight))  );
     }
 
     // 초기 height 값 조정
@@ -61,8 +61,9 @@ const ForScroll = styled.div`
 const GridWrap = styled.div`
     z-index:1;
     position: fixed;
-    width:2300px;
+    width:8772px;
     height: 100vh;
     background-color: salmon;
+    text-align: right;
     margin: 0 0 0 76px;
 `
