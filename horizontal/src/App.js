@@ -1,67 +1,68 @@
+//react
 import React ,{useState, useEffect, useRef} from 'react';
 
 // style
-import styled from "styled-components"
+import styled from "styled-components";
 
 
-
-const Main = (props) => {
+const App = (props) => {
     const gridRef = useRef();
-    const scrollRef = useRef();
-    const [heightGap, setHeightGap] = useState(2500);
+    const [scrollHeight, setScrollHeight] = useState(2000);
 
+    const setHeight = () => {
+      setScrollHeight((gridRef.current.offsetWidth - window.innerWidth) + (1016 - (937 - window.innerHeight))  );
+    }
+
+    // 초기 height 값 조정
     useEffect(() => {
-      // setHeightGap((window.innerWidth * 2.5) - (window.innerWidth - window.innerHeight));
-      setHeightGap(window.innerWidth * 2.5);
-      console.log(scrollRef.current.clientWidth);
-      // console.log(gridRef.current.clientWidth);
-      // console.log(window.innerWidth * 2.5);
-      // console.log(window.innerWidth - window.innerHeight);
-      // console.log((window.innerWidth * 2.5) - (window.innerWidth - window.innerHeight));
-    }, []);
+      setHeight();
+    }, [])
 
+    // resize 시 height 값 조정
+    window.addEventListener("resize", () => {
+        if(!gridRef.current){return}
+        setHeight();
+    }, [])
+
+    // 스크롤 이벤트
     window.addEventListener("scroll", (e) => {
-        if(gridRef.current){
-            let currentScroll = window.scrollY;
-            // 이계산식을 손봐야함  
-            gridRef.current.style.left=`${-1 * currentScroll}px`;
-            // console.log(gridRef.current.getBoundingClientRect());
-            // console.log(gridRef.current.getBoundingClientRect().x);
-            // console.log(gridRef.current.getBoundingClientRect().left);
-        }
+        if(!gridRef.current){return}
+        let currentScroll = window.scrollY;
+        gridRef.current.style.left=`${-1 * currentScroll}px`;
     })
 
 
     return(
         <Container>
+            <GridWrap ref={gridRef}>
+              Hello
+            </GridWrap>
 
-          <GridWrap className="test" ref={gridRef}> 
-            qweqwe
-          </GridWrap>
-
-          <ForScroll ref={scrollRef} heightGap={heightGap}></ForScroll>
+            {/* 스크롤을 위한 컨텐츠입니다. */}
+            <ForScroll scrollHeight={scrollHeight}></ForScroll>
         </Container>
     )
 };
 
-export default Main;
+export default App;
 
 const Container = styled.div`
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `
-
 const ForScroll = styled.div`
+    ${({scrollHeight})=>{
+    return (`height:${scrollHeight}px`)
+    }}
 
-  /* ${({heightGap})=>{
-      return(` height:${heightGap}px;`)
-  }} */
-  height:2000px;
-  border: 1px solid slateblue;
 `
 
 const GridWrap = styled.div`
-  height:100%;
-  width:2500px;
-  z-index:1;
-  position: fixed;
-  border:10px solid salmon;
+    z-index:1;
+    position: fixed;
+    width:2300px;
+    height: 100vh;
+    background-color: salmon;
+    margin: 0 0 0 76px;
 `
